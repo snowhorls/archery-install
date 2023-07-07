@@ -61,7 +61,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 systemctl daemon-reload
 
 echo "chrooting into new envirment"
-cp ~/archery/arch-install.sh /mnt
+cp ~/archery-install/arch-install.sh /mnt
 chmod +x /mnt/arch-install.sh
 arch-chroot /mnt 
 ./arch-install.sh
