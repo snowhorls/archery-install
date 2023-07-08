@@ -15,19 +15,22 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 echo "installing networkmanager"
+pacman -S --noconfirm networkmanager
 systemctl enable NetworkManager
 
 echo "$sys_name" > /etc/hostname
 
 if [ "$boot_ans" == "y" ]; then
 	echo "installing grub"
-	pacman -S grub efibootmgr
+	pacman -S --noconfirm grub efibootmgr
 	grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 else
 	echo "installing grub"
-	pacman -S grub
+	pacman -S --noconfirm grub
 	grub-install --target=i386-pc $drive
 fi
+
+grub-mkconfig -o /boot/grub/grub.cfg
 
 
 echo "enter a username"
