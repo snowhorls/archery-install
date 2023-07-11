@@ -4,8 +4,6 @@ echo "what will you call this computer"
 read sys_name
 echo "do you have a UEFI system [y/n]"
 read boot_ans
-echo "enter your drive"
-read drive
 
 echo "setting up timezone"
 ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
@@ -27,6 +25,9 @@ if [ "$boot_ans" == "y" ]; then
 	pacman -S --noconfirm grub efibootmgr
 	grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 else
+	echo "enter your drive"
+	read drive
+ 
 	echo "installing grub"
 	pacman -S --noconfirm grub
 	grub-install --target=i386-pc $drive
