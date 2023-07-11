@@ -4,6 +4,8 @@ echo "what will you call this computer"
 read sys_name
 echo "do you have a UEFI system [y/n]"
 read boot_ans
+echo "enter your drive"
+read drive
 
 echo "setting up timezone"
 ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
